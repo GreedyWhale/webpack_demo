@@ -1,0 +1,15 @@
+@import './animation.scss';
+body {
+  p {
+    color: blueviolet;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+}
+.name {
+  font-size: 40px;
+  color: orange;
+}
