@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'development',
@@ -11,6 +12,18 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve('dist')
   },
+  devServer: {
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'https://baike.baidu.com',
+        changeOrigin: true,
+        secure: false,
+      }
+    },
+    hot: true,
+    // hotOnly: true
+  },
   module: {
     rules: [
       {
@@ -18,10 +31,9 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            name: '[name].[ext]',
+            name: '[name]_[hash].[ext]',
             outputPath: path.join('assets', 'images'),
-            publicPath: path.join('..', 'dist', 'assets', 'images'),
-            limit: 10240
+            limit: 1024
           }
         }]
       },
@@ -33,7 +45,9 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              modules: true
+              modules: {
+                localIdentName: '[name]_[local]_[hash:base64]'
+              }
             }
           },
           { loader: 'postcss-loader' },
@@ -44,13 +58,15 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve('template', 'index.html')
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }

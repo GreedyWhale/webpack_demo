@@ -13,3 +13,8 @@ body {
   font-size: 40px;
   color: orange;
 }
+.item {
+  &:nth-of-type(odd) {
+    background: pink;
+  }
+}
