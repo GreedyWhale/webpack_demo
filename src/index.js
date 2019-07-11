@@ -1,3 +1,5 @@
+// import './helloWorld'
+
 import a from './a'
 import b from './b'
 import c from './c'
@@ -6,6 +8,8 @@ import avatar from './assets/images/avatar.jpeg'
 import style from './style/index.scss'
 import addItem from './addItem'
 import es6Test from './es6-test'
+import { add } from './methods'
+import './style/button.scss'
 
 a()
 b()
@@ -27,3 +31,5 @@ if (module.hot) {
 ajax()
 
 es6Test()
+
+add(1, 2)

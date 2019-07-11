@@ -1,28 +1,14 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
   entry: {
     main: path.resolve('src', 'index.js')
   },
   output: {
     filename: '[name].js',
     path: path.resolve('dist')
-  },
-  devServer: {
-    open: true,
-    proxy: {
-      '/api': {
-        target: 'https://baike.baidu.com',
-        changeOrigin: true,
-        secure: false,
-      }
-    },
-    hot: true,
-    // hotOnly: true
   },
   module: {
     rules: [
@@ -66,7 +52,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve('template', 'index.html')
     }),
-    new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new CleanWebpackPlugin()
   ]
 }
