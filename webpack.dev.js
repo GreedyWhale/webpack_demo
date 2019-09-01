@@ -4,6 +4,7 @@ const common = require('./webpack.common.js')
 
 const devConfig = {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     open: true,
     proxy: {

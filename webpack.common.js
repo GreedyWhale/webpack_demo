@@ -7,7 +7,8 @@ module.exports = {
     main: path.resolve('src', 'index.js')
   },
   output: {
-    filename: '[name].js',
+    filename: '[name]_[hash].js',
+    chunkFilename: '[name].js',
     path: path.resolve('dist')
   },
   module: {
@@ -53,5 +54,10 @@ module.exports = {
       template: path.resolve('template', 'index.html')
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // }
 }
