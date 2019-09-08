@@ -55,9 +55,18 @@ module.exports = {
     }),
     new CleanWebpackPlugin()
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          test: /[\\/]node_modules[\\/]/,
+          name (module) {
+            const moduleFileName = module.identifier().split('/').reduceRight(item => item)
+            return moduleFileName.split('.')[0]
+          },
+          chunks: 'all'
+        }
+      }
+    }
+  }
 }

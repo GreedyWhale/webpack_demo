@@ -10,8 +10,7 @@
     "dev-build": "webpack --config webpack.dev.js"
   },
   "sideEffects": [
-    "*.scss",
-    "./src/helloWorld.js"
+    "./src/**/*.js"
   ],
   "devDependencies": {
     "@babel/core": "^7.5.4",
@@ -36,6 +35,7 @@
   "dependencies": {
     "@babel/runtime": "^7.5.4",
     "core-js": "3",
+    "dayjs": "^1.8.16",
     "lodash": "^4.17.15"
   }
 }

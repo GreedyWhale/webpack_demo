@@ -1,1 +1,3 @@
-export default () => console.log('~~~~~~~~~~c~~~~~~~~~~~')
+import day from 'dayjs'
+
+console.log(day().format())
