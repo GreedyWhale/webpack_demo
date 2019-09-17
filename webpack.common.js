@@ -57,15 +57,17 @@ module.exports = {
   ],
   optimization: {
     splitChunks: {
+      chunks: 'initial',
+      // minSize: 1000,
       cacheGroups: {
-        common: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
-          name (module) {
-            const moduleFileName = module.identifier().split('/').reduceRight(item => item)
-            return moduleFileName.split('.')[0]
-          },
-          chunks: 'all'
-        }
+          // name (module) {
+          //   const moduleFileName = module.identifier().split('/').reduceRight(item => item)
+          //   return moduleFileName.split('.')[0]
+          // }
+          filename: 'vendors.js'
+        },
       }
     }
   }

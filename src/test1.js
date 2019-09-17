@@ -1,5 +1,7 @@
 import _ from 'lodash'
+// import dayjs from 'dayjs'
 
-var a = _.chunk([1,2,3,4], 2)
+const a = _.chunk([1,2,3,4], 2)
 console.log('test1.js')
 console.log(a)
+// console.log(dayjs().format('YYYY/MM/DD HH:mm:ss'))
