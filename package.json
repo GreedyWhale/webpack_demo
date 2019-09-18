@@ -10,7 +10,8 @@
     "dev-build": "webpack --config webpack.dev.js"
   },
   "sideEffects": [
-    "./src/**/*.js"
+    "./src/**/*.js",
+    "./src/**/*.scss"
   ],
   "devDependencies": {
     "@babel/core": "^7.5.4",
